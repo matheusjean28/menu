@@ -1,0 +1,16 @@
+
+
+{
+  "businessName": "testing",
+  "slug": "myfellas",
+  "email": "testing@gmail.com",
+  "password": "123456"
+}
+
+
+{
+  "businessName": "testing",
+  "slug": "4myfellas",
+  "email": "mtesting@gmail.com",
+  "password": "123456@Matheus"
+}

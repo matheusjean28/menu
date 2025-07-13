@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/Menu4MyFellas.Api.props" />
+</Project>

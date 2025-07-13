@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../buildMultiTargeting/Menu4MyFellas.Api.props" />
+</Project>
