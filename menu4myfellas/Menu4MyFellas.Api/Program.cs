@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.EntityFrameworkCore;
 using Menu4MyFellas.Api.Auth;
+using System.Reflection;
 using Microsoft.Extensions.Options;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +17,7 @@ builder.Services.AddEndpointsApiExplorer();
 
 var jwtKey = builder.Configuration["Jwt:Key"];
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
+
 
 Console.WriteLine(jwtIssuer);
 Console.WriteLine(jwtKey);
@@ -39,7 +41,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddScoped<TokenService>();
 
 builder.Services.AddSwaggerGen(c =>
-{
+{var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+c.IncludeXmlComments(xmlPath);
+
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Menu4MyFellas API", Version = "v1" });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
@@ -48,7 +53,7 @@ builder.Services.AddSwaggerGen(c =>
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer"
+        Scheme = "Bearer",
     });
 
     c.AddSecurityRequirement(new OpenApiSecurityRequirement()

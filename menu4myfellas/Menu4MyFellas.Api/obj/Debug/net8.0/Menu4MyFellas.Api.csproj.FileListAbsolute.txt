@@ -166,3 +166,5 @@
 /home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/Menu4MyFellas.Api.pdb
 /home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/Menu4MyFellas.Api.genruntimeconfig.cache
 /home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/ref/Menu4MyFellas.Api.dll
+/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/Menu4MyFellas.Api.xml
+/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/Menu4MyFellas.Api.xml
