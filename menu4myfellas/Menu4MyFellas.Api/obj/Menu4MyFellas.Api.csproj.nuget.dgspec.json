@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {}
+    "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj": {}
   },
   "projects": {
-    "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {
+    "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
+        "projectUniqueName": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj",
         "projectName": "Menu4MyFellas.Api",
-        "projectPath": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
-        "packagesPath": "/home/dev/.nuget/packages/",
-        "outputPath": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/",
+        "projectPath": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj",
+        "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/dev/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

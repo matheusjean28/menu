@@ -1,0 +1,43 @@
+## Compiled source ##
+bin/
+obj/
+
+## Build results ##
+*.exe
+*.dll
+*.app
+*.so
+*.dylib
+
+## User-specific files ##
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Rider / VSCode / VS
+.idea/
+.vscode/
+*.code-workspace
+
+## ASP.NET
+wwwroot/
+node_modules/
+dist/
+
+## Logs and database ##
+*.log
+# *.db
+# *.sqlite
+# menu4myfellas.db
+
+## Entity Framework Core migrations snapshot files (optional) ##
+**/Migrations/*.Designer.cs
+**/Migrations/*Snapshot.cs
+
+## Secrets (never commit) ##
+secrets.json
+
+## Others ##
+*.DS_Store
+Thumbs.db
