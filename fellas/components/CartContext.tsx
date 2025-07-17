@@ -35,7 +35,14 @@ export const useCart = () => {
 };
 
 export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [items, setItems] = useState<CartItem[]>([]);
+  const [items, setItems] = useState<CartItem[]>(() => {
+    const savedCart = localStorage.getItem('pizzaria-cart');
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('pizzaria-cart', JSON.stringify(items));
+  }, [items]);
 
   const addToCart = (product: Product) => {
     setItems(currentItems => {

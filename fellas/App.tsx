@@ -7,6 +7,7 @@ import { AdminLogin } from './components/AdminLogin';
 import { AdminDashboard } from './components/AdminDashboard';
 import { CartProvider } from './components/CartContext';
 import { AuthProvider, useAuth } from './components/AuthContext';
+import './styles/globals.css';
 
 type View = 'catalog' | 'cart' | 'checkout' | 'admin';
 
@@ -27,10 +28,10 @@ const AppContent: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="app">
       <Header currentView={currentView} onViewChange={handleViewChange} />
       
-      <main className="pb-8">
+      <main className="main-content">
         {currentView === 'catalog' && <ProductCatalog />}
         {currentView === 'cart' && <Cart onCheckout={handleCheckout} />}
         {currentView === 'checkout' && <Checkout onBack={handleBackToCatalog} />}

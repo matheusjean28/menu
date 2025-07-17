@@ -23,13 +23,19 @@ export const useAuth = () => {
   return context;
 };
 
+// Credenciais de demonstração
+const DEMO_CREDENTIALS = {
+  email: 'admin@pizzaria.com',
+  password: 'admin123'
+};
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Verificar se há um usuário salvo no localStorage
-    const savedUser = localStorage.getItem('pizza_admin_user');
+    // Verificar se há uma sessão salva
+    const savedUser = localStorage.getItem('pizzaria-user');
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
@@ -39,15 +45,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const login = async (email: string, password: string): Promise<boolean> => {
     setIsLoading(true);
     
-    // Simular login - em produção, isso seria uma chamada para API
-    if (email === 'admin@pizzaria.com' && password === 'admin123') {
-      const user = {
+    // Simular delay de API
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    if (email === DEMO_CREDENTIALS.email && password === DEMO_CREDENTIALS.password) {
+      const userData = {
         id: '1',
-        email: 'admin@pizzaria.com',
+        email: email,
         name: 'Administrador'
       };
-      setUser(user);
-      localStorage.setItem('pizza_admin_user', JSON.stringify(user));
+      setUser(userData);
+      localStorage.setItem('pizzaria-user', JSON.stringify(userData));
       setIsLoading(false);
       return true;
     }
@@ -58,11 +66,16 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
-    localStorage.removeItem('pizza_admin_user');
+    localStorage.removeItem('pizzaria-user');
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isLoading }}>
+    <AuthContext.Provider value={{
+      user,
+      login,
+      logout,
+      isLoading
+    }}>
       {children}
     </AuthContext.Provider>
   );
