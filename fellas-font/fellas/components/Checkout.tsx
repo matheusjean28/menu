@@ -57,7 +57,7 @@ export const Checkout: React.FC<CheckoutProps> = ({ onBack }) => {
     }
     
     // Enviar via WhatsApp
-    const whatsappUrl = `https://wa.me/5511999999999?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/5515997220646?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
     
     // Limpar carrinho
