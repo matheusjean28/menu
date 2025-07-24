@@ -3,6 +3,7 @@ using Menu4MyFellas.Api;
 using Menu4MyFellas.Api.Data;
 using Menu4MyFellas.Api.DTOs.InputData;
 using Menu4MyFellas.Api.Entities;
+using Menu4MyFellas.Api.Entities.Products;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

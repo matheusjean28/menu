@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Menu4MyFellas.Api.Entities;
+using Menu4MyFellas.Api.Entities.Products;
 
 namespace Menu4MyFellas.Api.Data;
 

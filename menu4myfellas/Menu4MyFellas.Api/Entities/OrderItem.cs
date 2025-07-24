@@ -1,3 +1,5 @@
+using Menu4MyFellas.Api.Entities.Products;
+
 namespace Menu4MyFellas.Api.Entities
 {
     public class OrderItem
