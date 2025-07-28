@@ -6,13 +6,22 @@
     <members>
         <member name="M:Menu4MyFellas.Api.Controllers.ProductController.ProductController.GetProducts">
             <summary>
-            Retorna todos os produtos do cliente autenticado.
+            Returns all products from the authenticated client.
             </summary>
         </member>
         <member name="M:Menu4MyFellas.Api.Controllers.ProductController.ProductController.CreateProduct(Menu4MyFellas.Api.DTOs.InputData.CreateProductDto)">
             <summary>
-            Cadastra um novo produto para o cliente autenticado.
+            Registers a new product for the authenticated client.
             </summary>
+        </member>
+        <member name="M:Menu4MyFellas.Api.Controllers.ProductController.ProductController.GetPublicProducts(System.String,System.String,System.String)">
+            <summary>
+            Lists public products from a client by slug, with optional category filter and ordering.
+            </summary>
+            <param name="slug">Client's slug</param>
+            <param name="category">Category name (optional)</param>
+            <param name="orderBy">Field to sort by: "name" or "price"</param>
+            <returns>Product list</returns>
         </member>
         <member name="M:Menu4MyFellas.Api.Controllers.TestController.Public">
             <summary>
