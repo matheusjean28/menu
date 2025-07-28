@@ -2,6 +2,7 @@ using System.Security.Claims;
 using Menu4MyFellas.Api;
 using Menu4MyFellas.Api.Data;
 using Menu4MyFellas.Api.DTOs.InputData;
+using Menu4MyFellas.Api.DTOs.Public;
 using Menu4MyFellas.Api.Entities;
 using Menu4MyFellas.Api.Entities.Products;
 using Microsoft.AspNetCore.Authorization;
@@ -23,7 +24,7 @@ public class ProductController : ControllerBase
     }
 
     /// <summary>
-    /// Retorna todos os produtos do cliente autenticado.
+    /// Returns all products from the authenticated client.
     /// </summary>
     [HttpGet]
     public async Task<IActionResult> GetProducts()
@@ -48,7 +49,7 @@ public class ProductController : ControllerBase
     }
 
     /// <summary>
-    /// Cadastra um novo produto para o cliente autenticado.
+    /// Registers a new product for the authenticated client.
     /// </summary>
     [HttpPost]
     public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto dto)
@@ -60,7 +61,7 @@ public class ProductController : ControllerBase
         );
 
         if (category == null)
-            return BadRequest("Categoria inválida ou não pertence ao cliente.");
+            return BadRequest("Invalid category or does not belong to the client.");
 
         var product = new Product
         {
@@ -100,7 +101,7 @@ public class ProductController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("{id}")]//delete product by id
+    [HttpDelete("{id}")] //delete product by id
     public async Task<IActionResult> DeleteProduct(Guid id)
     {
         var clientId = GetClientId();
@@ -117,15 +118,19 @@ public class ProductController : ControllerBase
         return NoContent();
     }
 
-
     /// <summary>
-    /// Lista todos os produtos públicos de um cliente.
+    /// Lists public products from a client by slug, with optional category filter and ordering.
     /// </summary>
-    /// <param name="slug">Identificador do cliente</param>
-    /// <returns>Lista de produtos</returns>
+    /// <param name="slug">Client's slug</param>
+    /// <param name="category">Category name (optional)</param>
+    /// <param name="orderBy">Field to sort by: "name" or "price"</param>
+    /// <returns>Product list</returns>
     [HttpGet("public/{slug}")]
     [AllowAnonymous]
-    public async Task<IActionResult> GetPublicProducts(string slug)
+    public async Task<IActionResult> GetPublicProducts(
+        string slug,
+        [FromQuery] string? category,
+        [FromQuery] string? orderBy)
     {
         var client = await _context.Clients
             .Include(c => c.Products)
@@ -133,31 +138,42 @@ public class ProductController : ControllerBase
             .FirstOrDefaultAsync(c => c.Slug == slug);
 
         if (client == null)
-            return NotFound("Cliente não encontrado.");
+            return NotFound("Client not found.");
 
-        var products = client.Products.Select(p => new
+        var productsQuery = client.Products.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(category))
         {
-            p.Id,
-            p.Name,
-            p.Price,
-            p.ImageUrl,
-            p.Ingredients,
-            Category = p.Category?.Name
+            productsQuery = productsQuery
+                .Where(p => p.Category.Name.ToLower() == category.ToLower());
+        }
+
+        if (!string.IsNullOrWhiteSpace(orderBy))
+        {
+            productsQuery = orderBy.ToLower() switch
+            {
+                "name" => productsQuery.OrderBy(p => p.Name),
+                "price" => productsQuery.OrderBy(p => p.Price),
+                _ => productsQuery
+            };
+        }
+
+        var result = productsQuery.Select(p => new ProductPublicDto
+        {
+            Id = p.Id,
+            Name = p.Name,
+            Price = p.Price,
+            ImageUrl = p.ImageUrl,
+            Ingredients = p.Ingredients,
+            Category = p.Category.Name
         });
 
-        return Ok(products);
+        return Ok(result);
     }
-
-
-
 
     private Guid GetClientId()
     {
         var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         return Guid.Parse(clientId!);
     }
-
-
-
-
 }
