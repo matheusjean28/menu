@@ -117,9 +117,47 @@ public class ProductController : ControllerBase
         return NoContent();
     }
 
+
+    /// <summary>
+    /// Lista todos os produtos públicos de um cliente.
+    /// </summary>
+    /// <param name="slug">Identificador do cliente</param>
+    /// <returns>Lista de produtos</returns>
+    [HttpGet("public/{slug}")]
+    [AllowAnonymous]
+    public async Task<IActionResult> GetPublicProducts(string slug)
+    {
+        var client = await _context.Clients
+            .Include(c => c.Products)
+                .ThenInclude(p => p.Category)
+            .FirstOrDefaultAsync(c => c.Slug == slug);
+
+        if (client == null)
+            return NotFound("Cliente não encontrado.");
+
+        var products = client.Products.Select(p => new
+        {
+            p.Id,
+            p.Name,
+            p.Price,
+            p.ImageUrl,
+            p.Ingredients,
+            Category = p.Category?.Name
+        });
+
+        return Ok(products);
+    }
+
+
+
+
     private Guid GetClientId()
     {
         var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
         return Guid.Parse(clientId!);
     }
+
+
+
+
 }
