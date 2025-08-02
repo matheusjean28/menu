@@ -78,6 +78,10 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 
 var app = builder.Build();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "3000";
+app.Urls.Add($"http://*:{port}");
+
+app.Run();
 
 app.UseAuthentication();
 app.UseAuthorization();
