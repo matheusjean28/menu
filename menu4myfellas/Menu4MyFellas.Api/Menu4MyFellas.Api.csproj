@@ -8,10 +8,12 @@
   <NoWarn>$(NoWarn);1591</NoWarn>
   </PropertyGroup>
 
+<ItemGroup>
+  <None Include="menu4myfellas.db" CopyToOutputDirectory="PreserveNewest" />
+</ItemGroup>
   <ItemGroup>
     <None Update="appsettings.json">
     <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      <None Include="menu4myfellas.db" CopyToOutputDirectory="PreserveNewest" />
   </None>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.10" />

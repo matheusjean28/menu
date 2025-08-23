@@ -23,7 +23,7 @@ public class TestController : ControllerBase
     /// <returns>Unauthorized Access message</returns>
     /// <response code="200">Authorized With Jwt</response>
     /// <response code="401">Not Authorized(with or without jwt)</response>
-    [Authorize]
+    // [Authorize]
     [HttpGet("private")]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

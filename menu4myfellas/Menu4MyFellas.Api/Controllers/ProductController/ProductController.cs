@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Menu4MyFellas.Api.Controllers.ProductController;
 
-[Authorize]
+//[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class ProductController : ControllerBase
@@ -171,9 +171,28 @@ public class ProductController : ControllerBase
         return Ok(result);
     }
 
+   
+    //private Guid GetClientId()
+    //{
+    //        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+    //        return Guid.Parse(clientId!);
+    //}
+
     private Guid GetClientId()
     {
         var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-        return Guid.Parse(clientId!);
+
+        if (string.IsNullOrEmpty(clientId))
+        {
+            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
+            {
+                return Guid.Parse("3110CB57-9327-4298-8700-8BF2D7255239");
+            }
+
+            throw new UnauthorizedAccessException("Client ID is missing");
+        }
+
+        return Guid.Parse(clientId);
     }
+
 }
