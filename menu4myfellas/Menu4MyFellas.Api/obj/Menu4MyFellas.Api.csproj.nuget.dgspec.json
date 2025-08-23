@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {}
+    "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {}
   },
   "projects": {
-    "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {
+    "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
+        "projectUniqueName": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
         "projectName": "Menu4MyFellas.Api",
-        "projectPath": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
+        "projectPath": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
         "packagesPath": "/home/dev/.nuget/packages/",
-        "outputPath": "/home/dev/Desktop/menufellas/menu/menu4myfellas/Menu4MyFellas.Api/obj/",
+        "outputPath": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/dev/.nuget/NuGet/NuGet.Config"

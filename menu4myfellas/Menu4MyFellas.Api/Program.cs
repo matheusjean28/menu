@@ -69,8 +69,10 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 // Banco de dados SQLite
+var dbPath = Path.Combine(AppContext.BaseDirectory, "menu4myfellas.db");
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite("Data Source=menu4myfellas.db"));
+    options.UseSqlite($"Data Source={dbPath}"));
+
 
 var app = builder.Build();
 
@@ -89,5 +91,12 @@ app.UseSwaggerUI(c =>
 });
 
 app.MapControllers();
+
+//certifica que vai criar o db mesmo depois de buildar o projeto
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 app.Run();
