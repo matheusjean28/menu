@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Menu4MyFellas.Api.Controllers.CategoryController;
 
-//[Authorize]
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class CategoryController : ControllerBase
@@ -43,29 +43,11 @@ public class CategoryController : ControllerBase
         return CreatedAtAction(nameof(GetCategories), new { id = category.Id }, category);
     }
 
-    //private Guid GetClientId()
-    //{
-    //        var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-    //        return Guid.Parse(clientId!);
-    //}
-
     private Guid GetClientId()
     {
         var clientId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-        if (string.IsNullOrEmpty(clientId))
-        {
-            if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
-            {
-                return Guid.Parse("3110CB57-9327-4298-8700-8BF2D7255239");
-            }
-
-            throw new UnauthorizedAccessException("Client ID is missing");
-        }
-
-        return Guid.Parse(clientId);
+        return Guid.Parse(clientId!);
     }
-
 
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateCategory(Guid id, [FromBody] CreateCategoryDto dto)
@@ -85,21 +67,21 @@ public class CategoryController : ControllerBase
     }
 
     [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteCategory(Guid id)
-    {
-        var clientId = GetClientId();
-        var category = await _context.Categories
-            .Include(c => c.Products)
-            .FirstOrDefaultAsync(c => c.Id == id && c.ClientId == clientId);
+public async Task<IActionResult> DeleteCategory(Guid id)
+{
+    var clientId = GetClientId();
+    var category = await _context.Categories
+        .Include(c => c.Products)
+        .FirstOrDefaultAsync(c => c.Id == id && c.ClientId == clientId);
 
-        if (category == null) return NotFound();
-        if (category.Products.Any())
-            return BadRequest("A categoria contém produtos e não pode ser excluída.");
+    if (category == null) return NotFound();
+    if (category.Products.Any())
+        return BadRequest("A categoria contém produtos e não pode ser excluída.");
 
-        _context.Categories.Remove(category);
-        await _context.SaveChangesAsync();
+    _context.Categories.Remove(category);
+    await _context.SaveChangesAsync();
 
-        return NoContent();
-    }
+    return NoContent();
+}
 
 }

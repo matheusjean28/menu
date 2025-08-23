@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Menu4MyFellas.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+634361e0638de9b9a67e817f6c982b49efeebc60")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7b2e061f2eedfd97839b23010bd567636c6f74fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("Menu4MyFellas.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Menu4MyFellas.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
