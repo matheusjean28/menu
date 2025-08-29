@@ -4003,19 +4003,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sandr\\.nuget\\packages\\": {}
+    "/home/dev/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj",
+      "projectUniqueName": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
       "projectName": "Menu4MyFellas.Api",
-      "projectPath": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\Menu4MyFellas.Api.csproj",
-      "packagesPath": "C:\\Users\\sandr\\.nuget\\packages\\",
-      "outputPath": "C:\\dev\\menu\\menu4myfellas\\Menu4MyFellas.Api\\obj\\",
+      "projectPath": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/Menu4MyFellas.Api.csproj",
+      "packagesPath": "/home/dev/.nuget/packages/",
+      "outputPath": "/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\sandr\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/dev/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -4090,7 +4090,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.404/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

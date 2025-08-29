@@ -30,16 +30,16 @@
             <response code="200">Authorized With Jwt</response>
             <response code="401">Not Authorized(with or without jwt)</response>
         </member>
-        <member name="T:Menu4MyFellas.Api.Migrations.InitialCreate">
+        <member name="T:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase">
             <inheritdoc />
         </member>
-        <member name="M:Menu4MyFellas.Api.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Menu4MyFellas.Api.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
             <inheritdoc />
         </member>
-        <member name="M:Menu4MyFellas.Api.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
     </members>

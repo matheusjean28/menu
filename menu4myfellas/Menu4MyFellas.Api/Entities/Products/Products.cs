@@ -22,13 +22,13 @@ namespace Menu4MyFellas.Api.Entities.Products
     public Guid CategoryId { get; set; }
 
     [ForeignKey("CategoryId")]
-    public Category Category { get; set; }
+    public Category Category { get; set; } 
 
     [Required]
     public Guid ClientId { get; set; }
 
     [ForeignKey("ClientId")]
-    public Client Client { get; set; }
+    public required Client Client { get; set; }
 }
 
 }

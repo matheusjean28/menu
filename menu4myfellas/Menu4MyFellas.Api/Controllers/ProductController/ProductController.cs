@@ -49,33 +49,62 @@ public class ProductController : ControllerBase
     /// <summary>
     /// Cadastra um novo produto para o cliente autenticado.
     /// </summary>
-    [HttpPost]
-    public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto dto)
-    {
-        var clientId = GetClientId();
+[HttpPost]
+public async Task<IActionResult> CreateProduct([FromBody] CreateProductDto dto)
+{
+    var clientId = GetClientId();
 
-        var category = await _context.Categories.FirstOrDefaultAsync(c =>
-            c.Id == dto.CategoryId && c.ClientId == clientId
-        );
+    Guid categoryId;
+
+    if (dto.CategoryId == Guid.Empty)
+    {
+        // take "others" category
+        var category = await _context.Categories
+            .FirstOrDefaultAsync(c => c.Name == "Others" && c.ClientId == clientId);
 
         if (category == null)
-            return BadRequest("Categoria inválida ou não pertence ao cliente.");
-
-        var product = new Product
         {
-            Name = dto.Name,
-            Price = dto.Price,
-            Ingredients = dto.Ingredients,
-            ImageUrl = dto.ImageUrl,
-            CategoryId = dto.CategoryId,
-            ClientId = clientId
-        };
+            // create if doest exist
+            category = new Category
+            {
+                Id = Guid.NewGuid(),
+                Name = "Others",
+                ClientId = clientId
+            };
+            _context.Categories.Add(category);
+            await _context.SaveChangesAsync();
+        }
 
-        _context.Products.Add(product);
-        await _context.SaveChangesAsync();
-
-        return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
+        categoryId = category.Id;
     }
+    else
+    {
+        // sure that category belongs to that client
+        var categoryExists = await _context.Categories
+            .AnyAsync(c => c.Id == dto.CategoryId && c.ClientId == clientId);
+
+        if (!categoryExists)
+            return BadRequest("Invalid category or doesnt belongs to client.");
+
+        categoryId = dto.CategoryId;
+    }
+
+    var product = new Product
+    {
+        Name = dto.Name,
+        Price = dto.Price,
+        Ingredients = dto.Ingredients,
+        ImageUrl = dto.ImageUrl,
+        CategoryId = categoryId,
+        ClientId = clientId
+    };
+
+    _context.Products.Add(product);
+    await _context.SaveChangesAsync();
+
+    return CreatedAtAction(nameof(GetProducts), new { id = product.Id }, product);
+}
+
 
     [HttpPut("{id}")] //update product by id
     public async Task<IActionResult> UpdateProduct(Guid id, [FromBody] CreateProductDto dto)

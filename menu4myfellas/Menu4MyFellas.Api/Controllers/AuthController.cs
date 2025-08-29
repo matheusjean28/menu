@@ -31,6 +31,8 @@ public class AuthController : ControllerBase
         if (await _dbContext.Clients.AnyAsync(c => c.Slug == dto.Slug))
             return BadRequest("Slug already taken.");
 
+
+
         var client = new Client
         {
             BusinessName = dto.BusinessName,
@@ -40,6 +42,14 @@ public class AuthController : ControllerBase
         };
 
         _dbContext.Clients.Add(client);
+        var _defaultCategory = new Category
+        {
+            Id = Guid.NewGuid(),
+            Name = "Others",
+            ClientId = client.Id,
+        };
+        _dbContext.Categories.Add(_defaultCategory);
+
         await _dbContext.SaveChangesAsync();
 
         return Ok(new { Message = "Registration successful" });

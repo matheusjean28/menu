@@ -21,6 +21,10 @@ var jwtIssuer = builder.Configuration["Jwt:Issuer"];
 
 Console.WriteLine(jwtIssuer);
 Console.WriteLine(jwtKey);
+if (string.IsNullOrEmpty(jwtKey))
+{
+        throw new InvalidOperationException("JWT Key are not set up. Please Configure 'jwtKey' at appsettings or virtual envarioment.");
+}
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

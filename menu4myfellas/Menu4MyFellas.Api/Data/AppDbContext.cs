@@ -26,12 +26,15 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<Product>()
             .HasOne(p => p.Client)
             .WithMany(c => c.Products)
-            .HasForeignKey(p => p.ClientId);
+            .HasForeignKey(p => p.ClientId)
+            .OnDelete(DeleteBehavior.Cascade);
+        
 
         modelBuilder.Entity<Category>()
             .HasOne(c => c.Client)
             .WithMany(c => c.Categories)
-            .HasForeignKey(c => c.ClientId);
+            .HasForeignKey(c => c.ClientId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         modelBuilder.Entity<Order>()
             .HasOne(o => o.Client)
