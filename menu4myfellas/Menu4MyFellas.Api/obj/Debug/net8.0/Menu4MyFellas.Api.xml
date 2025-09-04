@@ -42,5 +42,17 @@
         <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
             <inheritdoc />
         </member>
+        <member name="T:Menu4MyFellas.Api.Migrations.AddPasswordResetFields">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.AddPasswordResetFields.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.AddPasswordResetFields.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.AddPasswordResetFields.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
     </members>
 </doc>

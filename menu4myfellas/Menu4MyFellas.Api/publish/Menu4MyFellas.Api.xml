@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Menu4MyFellas.Api</name>
+    </assembly>
+    <members>
+        <member name="M:Menu4MyFellas.Api.Controllers.ProductController.ProductController.GetProducts">
+            <summary>
+            Retorna todos os produtos do cliente autenticado.
+            </summary>
+        </member>
+        <member name="M:Menu4MyFellas.Api.Controllers.ProductController.ProductController.CreateProduct(Menu4MyFellas.Api.DTOs.InputData.CreateProductDto)">
+            <summary>
+            Cadastra um novo produto para o cliente autenticado.
+            </summary>
+        </member>
+        <member name="M:Menu4MyFellas.Api.Controllers.TestController.Public">
+            <summary>
+            Public route to test API. 
+            Dont needs authentication.
+            </summary>
+            <returns>Sucess message</returns>
+            <response code="200">Sucessful message</response>
+        </member>
+        <member name="M:Menu4MyFellas.Api.Controllers.TestController.Private">
+            <summary>
+            private route protected by jwt authentication.
+            </summary>
+            <returns>Unauthorized Access message</returns>
+            <response code="200">Authorized With Jwt</response>
+            <response code="401">Not Authorized(with or without jwt)</response>
+        </member>
+        <member name="T:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Menu4MyFellas.Api.Migrations.DefaultOthersCategoryAtDatabase.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>

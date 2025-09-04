@@ -6,6 +6,7 @@ using Menu4MyFellas.Api.Entities;
 using Menu4MyFellas.Api.Auth;
 using System.Security.Cryptography;
 using System.Text;
+using Menu4MyFellas.Api.DTOs.InputData;
 
 namespace Menu4MyFellas.Api.Controllers;
 
@@ -71,6 +72,47 @@ public class AuthController : ControllerBase
             Slug = client.Slug
         });
     }
+    [HttpPost("forgot-password")]
+    public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDTO dto)
+    {
+        var client = await _dbContext.Clients.FirstOrDefaultAsync(c => c.Email == dto.Email);
+        if (client == null)
+            return NotFound(new { message = "Client not found" });
+
+        // gera token temporário
+        var token = Guid.NewGuid().ToString();
+        client.PasswordResetToken = token;
+        client.TokenExpiration = DateTime.UtcNow.AddHours(1);
+
+        await _dbContext.SaveChangesAsync();
+
+        // normalmente enviaria por email, mas aqui retorna em JSON
+        return Ok(new
+        {
+            message = "Password reset token generated.",
+            token
+        });
+    }
+
+    [HttpPost("reset-password")]
+    public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordDto dto)
+    {
+        var client = await _dbContext.Clients
+            .FirstOrDefaultAsync(c => c.PasswordResetToken == dto.Token);
+
+        if (client == null || client.TokenExpiration < DateTime.UtcNow)
+            return BadRequest(new { message = "Invalid or expired token." });
+
+        client.PasswordHash = HashPassword(dto.NewPassword);
+        client.PasswordResetToken = null;
+        client.TokenExpiration = null;
+
+        await _dbContext.SaveChangesAsync();
+
+        return Ok(new { message = "Password reset successful." });
+    }
+
+
 
     private string HashPassword(string password)
     {

@@ -510,3 +510,10 @@ C:/dev/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/ref/Menu4MyFellas.A
 /home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/Menu4MyFellas.Api.pdb
 /home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/Menu4MyFellas.Api.genruntimeconfig.cache
 /home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/obj/Debug/net8.0/ref/Menu4MyFellas.Api.dll
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/web.config
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/appsettings.Development.json
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/appsettings.json
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/Menu4MyFellas.Api.deps.json
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/Menu4MyFellas.Api.runtimeconfig.json
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/package-lock.json
+/home/dev/geral-projects/menu/menu4myfellas/Menu4MyFellas.Api/bin/Debug/net8.0/publish/package.json
