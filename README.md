@@ -88,3 +88,19 @@ README.md
 - SQLite (desenvolvimento)
 - Vite + React ou HTML/JS puro
 - TailwindCSS (UI rápida)
+
+---
+
+## Configuração local
+
+A chave do JWT e o banco não ficam no repositório. Em `menu4myfellas/Menu4MyFellas.Api`:
+
+```bash
+dotnet tool install --global dotnet-ef --version "9.*"
+dotnet ef database update
+
+# chave própria, com pelo menos 32 caracteres
+export Jwt__Key="sua-chave-longa-e-aleatoria"      # Linux/macOS
+$env:Jwt__Key="sua-chave-longa-e-aleatoria"        # PowerShell
+dotnet run
+```

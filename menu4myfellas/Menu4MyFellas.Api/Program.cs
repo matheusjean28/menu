@@ -15,12 +15,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
 
-var jwtKey = builder.Configuration["Jwt:Key"];
+var jwtKey = builder.Configuration["Jwt:Key"]
+    ?? throw new InvalidOperationException("Defina a variável de ambiente Jwt__Key");
 var jwtIssuer = builder.Configuration["Jwt:Issuer"];
 
 
-Console.WriteLine(jwtIssuer);
-Console.WriteLine(jwtKey);
 
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

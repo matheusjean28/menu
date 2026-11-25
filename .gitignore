@@ -41,3 +41,10 @@ secrets.json
 ## Others ##
 *.DS_Store
 Thumbs.db
+
+# Bancos de dados locais
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+pass.txt
